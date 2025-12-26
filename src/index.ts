@@ -140,11 +140,14 @@ async function handleStaticFile(request: Request, path: string): Promise<Respons
   });
 }
 
-async function handleRoot(): Promise<Response> {
+async function handleRoot(request: Request): Promise<Response> {
+  const url = new URL(request.url);
+  const baseUrl = `${url.protocol}//${url.host}`;
+
   const html = `<!DOCTYPE html>
 <html>
 <head>
-  <title>GoKZ Overlay</title>
+  <title>GOKZ Overlay</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -185,13 +188,13 @@ async function handleRoot(): Promise<Response> {
 </head>
 <body>
   <div class="container">
-    <h1>GoKZ Overlay</h1>
+    <h1>GOKZ Overlay</h1>
     <p>To access your overlay, please visit:</p>
     <div class="example">
-      <code>/{your-steamid64}</code>
+      <code>${baseUrl}/{your-steamid64}</code>
     </div>
     <p>Replace <code>{your-steamid64}</code> with your SteamID64.</p>
-    <p><small>Example: <code>/76561198012345678</code></small></p>
+    <p><small>Example: <code>${baseUrl}/76561198012345678</code></small></p>
   </div>
 </body>
 </html>`;
