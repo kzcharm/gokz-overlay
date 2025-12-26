@@ -32,7 +32,8 @@ export default {
       path.startsWith("/js/") ||
       path.startsWith("/css/") ||
       path.startsWith("/conf/") ||
-      path.startsWith("/assets/")
+      path.startsWith("/assets/") ||
+      path.endsWith(".cfg")
     ) {
       return handleStaticFile(request, path);
     }
@@ -126,6 +127,8 @@ async function handleStaticFile(request: Request, path: string): Promise<Respons
     contentType = "image/png";
   } else if (path.endsWith(".jpg") || path.endsWith(".jpeg")) {
     contentType = "image/jpeg";
+  } else if (path.endsWith(".cfg")) {
+    contentType = "text/plain";
   }
 
   // Return the asset
@@ -184,6 +187,38 @@ async function handleRoot(request: Request): Promise<Response> {
       border-radius: 4px;
       border-left: 3px solid #4a9eff;
     }
+    .instructions {
+      text-align: left;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: #1a1a1a;
+      border-radius: 4px;
+    }
+    .instructions ol {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    .instructions li {
+      margin: 0.5rem 0;
+    }
+    .download-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #4a9eff;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: background 250ms ease-in-out;
+    }
+    .download-btn:hover {
+      background: #3a8eef;
+    }
+    .path {
+      color: #4a9eff;
+      font-family: 'Courier New', monospace;
+    }
   </style>
 </head>
 <body>
@@ -195,6 +230,23 @@ async function handleRoot(request: Request): Promise<Response> {
     </div>
     <p>Replace <code>{your-steamid64}</code> with your SteamID64.</p>
     <p><small>Example: <code>${baseUrl}/76561198012345678</code></small></p>
+    
+    <div class="instructions">
+      <h2 style="margin-top: 0; color: #4a9eff;">Setup Instructions</h2>
+      <ol>
+        <li>Download the Game State Integration configuration file:
+          <br><a href="${baseUrl}/gamestate_integration_gokz_overlay.cfg" class="download-btn" download>Download gamestate_integration_gokz_overlay.cfg</a>
+        </li>
+        <li>Place the file in your CS:GO/CS2 <span class="path">cfg/</span> folder:
+          <ul style="margin-top: 0.5rem;">
+            <li><strong>CS:GO:</strong> <span class="path">Steam/steamapps/common/Counter-Strike Global Offensive/cfg/</span></li>
+            <li><strong>CS2:</strong> <span class="path">Steam/steamapps/common/Counter-Strike Global Offensive/game/csgo/cfg/</span></li>
+          </ul>
+        </li>
+        <li>Update the <code>"uri"</code> field in the config file to point to your overlay URL: <code>${baseUrl}/</code></li>
+        <li>Restart CS:GO/CS2 for the changes to take effect.</li>
+      </ol>
+    </div>
   </div>
 </body>
 </html>`;
