@@ -238,7 +238,6 @@ async function handleRoot(request: Request): Promise<Response> {
           <br><a href="${baseUrl}/gamestate_integration_gokz_overlay.cfg" class="download-btn" download>Download gamestate_integration_gokz_overlay.cfg</a>
         </li>
         <li>Place the file in your CS:GO <span class="path">cfg/</span> folder:
-          <span class="path">Steam/steamapps/common/Counter-Strike Global Offensive/cfg/</span>
         </li>
         <li>Restart CS:GO for the changes to take effect.</li>
       </ol>

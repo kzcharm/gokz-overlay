@@ -10,7 +10,6 @@ This version has been ported to Cloudflare Workers, so you don't need to set up 
 
 1. Download `gamestate_integration_gokz_overlay.cfg` from the root of this repository
 2. Place it in your CS:GO `cfg/` folder:
-   - `Steam/steamapps/common/Counter-Strike Global Offensive/cfg/`
 3. Restart CS:GO
 
 That's it! The overlay will work automatically.
