@@ -1,0 +1,21 @@
+{
+  "name": "gokz-overlay",
+  "version": "1.0.0",
+  "description": "GoKZ overlay for Cloudflare Workers",
+  "main": "src/index.ts",
+  "scripts": {
+    "build:static": "node build-static.js",
+    "dev": "npm run build:static && wrangler dev",
+    "deploy": "npm run build:static && wrangler deploy",
+    "build": "npm run build:static && tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241106.0",
+    "typescript": "^5.3.3",
+    "wrangler": "^3.78.0"
+  }
+}
+

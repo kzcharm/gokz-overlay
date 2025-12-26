@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;500&display=swap");
+
+:root {
+  --text-color: #ffffff;
+  --background-color: #000000;
+}
+
+body {
+  background: var(--background-color);
+}
+
+span {
+  color: var(--text-color);
+  font-size: 22px;
+  font-weight: 300;
+  padding-left: 5px;
+  font-family: "Work Sans", sans-serif;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  text-align: center;
+  margin-right: 10px;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  background: #0069ed;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+}
+
+button:hover,
+button:focus {
+  background: #0053ba;
+}
+
+button:active {
+  transform: scale(0.99);
+}
+
+#overlay {
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.map-name {
+  font-size: 34px;
+  font-weight: 500;
+  padding-right: 1px;
+}
+
+.record-row {
+  padding-left: 10px;
+}
+
+.tp-record-header {
+  color: orange;
+  margin-left: 19px;
+}
+
+.nub-record-header {
+  color: orange;
+}
+
+.pro-record-header {
+  color: dodgerblue;
+  margin-left: 1px;
+}
+
+.record-time-wr {
+  color: #adff2f;
+}
+
+.record-time-diff {
+  color: #ff7f7f;
+}
+
+.loading-indicator {
+  height: 20px;
+  margin-left: 5px;
+  vertical-align: bottom;
+}
+
+.record-player-name {
+  max-width: 100px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}
