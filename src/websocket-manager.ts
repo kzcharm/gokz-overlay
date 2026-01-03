@@ -61,6 +61,15 @@ export class WebSocketManager implements DurableObject {
   }
 
   async broadcast(message: string): Promise<void> {
+    // Rate limiting: only broadcast once per second
+    const now = Date.now();
+    const lastBroadcastTime = await this.state.storage.get<number>("lastBroadcastTime");
+    
+    // If less than 1 second has passed since last broadcast, skip this update
+    if (lastBroadcastTime !== undefined && (now - lastBroadcastTime) < 1000) {
+      return;
+    }
+
     // Broadcast to all connected WebSockets
     const deadConnections: WebSocket[] = [];
 
@@ -77,6 +86,9 @@ export class WebSocketManager implements DurableObject {
     for (const ws of deadConnections) {
       this.connections.delete(ws);
     }
+
+    // Update the last broadcast timestamp
+    await this.state.storage.put("lastBroadcastTime", now);
   }
 }
 
