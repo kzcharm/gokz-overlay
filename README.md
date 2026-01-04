@@ -41,7 +41,7 @@ Deploy to Cloudflare Workers:
 ```bash
 npm run deploy
 ```
-
+****
 Make sure you have:
 - Cloudflare account configured with `wrangler login`
 - Durable Objects enabled in your Cloudflare plan (free tier supports SQLite-based Durable Objects)
